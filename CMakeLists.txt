@@ -17,6 +17,9 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        note/CNoteI.h
+        note/CNote.h
+        note/CNote.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
