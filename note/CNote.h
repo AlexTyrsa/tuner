@@ -8,7 +8,7 @@ public:
     CNote(const std::string& inName, int inFreq);
 
     std::string name() const override;
-    int freq() const override;
+    int  freq() const override;
     bool selected() const override;
     bool highlighted() const override;
 

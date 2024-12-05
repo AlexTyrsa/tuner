@@ -20,6 +20,9 @@ set(PROJECT_SOURCES
         note/CNoteI.h
         note/CNote.h
         note/CNote.cpp
+        octave/COctaveI.h
+        octave/COctave.h
+        octave/COctave.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
