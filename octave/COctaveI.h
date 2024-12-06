@@ -33,4 +33,11 @@ public:
 
     virtual ~COctaveI() = default;
 
+public:
+    template <typename COctaveT>
+    static std::shared_ptr<COctaveI> create(EOctaveId inOctaveId, const std::string& inName)
+    {
+        return std::make_shared<COctaveT>(inOctaveId, inName);
+    }
+
 };

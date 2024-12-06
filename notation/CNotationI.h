@@ -23,4 +23,11 @@ public:
 
     virtual ~CNotationI() = default;
 
+public:
+    template <typename CNotationT>
+    static std::shared_ptr<CNotationI> create()
+    {
+        return std::make_shared<CNotationT>();
+    }
+
 };

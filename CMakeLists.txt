@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         notation/CNotationI.h
         notation/CNotation.h
         notation/CNotation.cpp
+        factory/CFactory.h
+        factory/CFactory.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

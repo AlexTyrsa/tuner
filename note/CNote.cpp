@@ -1,6 +1,6 @@
 #include "CNote.h"
 
-CNote::CNote(ENoteId inId, EOctaveId inOctaveId, const std::string &inName, int inFreq) : mId(inId), mOctaveId(inOctaveId), mName(inName), mFreq(inFreq), mSelected(false), mHighlighted(false)
+CNote::CNote(ENoteId inId, EOctaveId inOctaveId, const std::string &inName, int inFreq) : mId(inId), mOctaveId(inOctaveId), mName(inName), mFreq(inFreq), mSelected(false)
 {
 
 }

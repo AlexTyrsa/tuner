@@ -3,6 +3,7 @@
 #include "../CNoteDefs.h"
 
 #include <string>
+#include <memory>
 
 class CNoteI
 {
@@ -19,5 +20,12 @@ public:
     virtual void setHighlighted(bool inHighlighted) = 0;
 
     virtual ~CNoteI() = default;
+
+public:
+    template <typename CNoteT>
+    static std::shared_ptr<CNoteI> create(ENoteId inId, EOctaveId inOctaveId, const std::string& inName, int inFreq)
+    {
+        return std::make_shared<CNoteT>(inId, inOctaveId, inName, inFreq);
+    }
 
 };
