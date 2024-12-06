@@ -1,6 +1,6 @@
 #include "CNote.h"
 
-CNote::CNote(const std::string &inName, int inFreq) : mName(inName), mFreq(inFreq), mSelected(false), mHighlighted(false)
+CNote::CNote(ENoteId inId, EOctaveId inOctaveId, const std::string &inName, int inFreq) : mId(inId), mOctaveId(inOctaveId), mName(inName), mFreq(inFreq), mSelected(false), mHighlighted(false)
 {
 
 }
@@ -15,14 +15,19 @@ int CNote::freq() const
     return mFreq;
 }
 
+ENoteId CNote::id() const
+{
+    return mId;
+}
+
+EOctaveId CNote::octave() const
+{
+    return mOctaveId;
+}
+
 bool CNote::selected() const
 {
     return mSelected;
-}
-
-bool CNote::highlighted() const
-{
-    return mHighlighted;
 }
 
 void CNote::setSelected(bool inSelected)
@@ -31,21 +36,11 @@ void CNote::setSelected(bool inSelected)
     {
         mSelected = inSelected;
 
-        stateChanged();
+        selectChanged();
     }
 }
 
-void CNote::setHighlighted(bool inHighlighted)
-{
-    if(highlighted() != inHighlighted)
-    {
-        mHighlighted = inHighlighted;
-
-        stateChanged();
-    }
-}
-
-void CNote::stateChanged()
+void CNote::selectChanged()
 {
 
 }

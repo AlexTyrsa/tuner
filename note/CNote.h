@@ -5,23 +5,25 @@
 class CNote : public CNoteI
 {
 public:
-    CNote(const std::string& inName, int inFreq);
+    CNote(ENoteId inId, EOctaveId inOctaveId, const std::string& inName, int inFreq);
 
     std::string name() const override;
     int  freq() const override;
-    bool selected() const override;
-    bool highlighted() const override;
+    ENoteId id() const override;
+    EOctaveId octave() const override;
 
+    bool selected() const override;
     void setSelected(bool inSelected) override;
-    void setHighlighted(bool inHighlighted) override;
 
 protected:
-    virtual void stateChanged() override;
+    virtual void selectChanged();
 
 private:
-    std::string mName;
-    int mFreq;
+    const ENoteId mId;
+    const EOctaveId mOctaveId;
+    const std::string mName;
+    const int mFreq;
+
     bool mSelected;
-    bool mHighlighted;
 
 };

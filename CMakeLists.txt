@@ -17,12 +17,16 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        CNoteDefs.h
         note/CNoteI.h
         note/CNote.h
         note/CNote.cpp
         octave/COctaveI.h
         octave/COctave.h
         octave/COctave.cpp
+        notation/CNotationI.h
+        notation/CNotation.h
+        notation/CNotation.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
