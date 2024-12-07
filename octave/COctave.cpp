@@ -21,7 +21,7 @@ EOctaveId COctave::id() const
 
 std::shared_ptr<CNoteI> COctave::note_index(int inIndex) const
 {
-    assert(!(inIndex >= 0 && inIndex < size()));
+    assert(inIndex >= 0 && inIndex < size());
 
     if(inIndex >= 0 && inIndex < size())
         return mNotes[inIndex];
@@ -31,7 +31,7 @@ std::shared_ptr<CNoteI> COctave::note_index(int inIndex) const
 
 std::shared_ptr<CNoteI> COctave::note_id(int inId) const
 {
-    assert(!(inId >= ENoteId_Begin && inId < ENoteId_End));
+    assert(inId >= ENoteId_Begin && inId < ENoteId_End);
 
     std::vector<std::shared_ptr<CNoteI>>::const_iterator result = std::find_if(mNotes.cbegin(), mNotes.cend(), [inId](std::shared_ptr<CNoteI> note)->bool
     {
@@ -46,7 +46,7 @@ std::shared_ptr<CNoteI> COctave::note_id(int inId) const
 
 std::shared_ptr<CNoteI> COctave::nearest(int inFreq) const
 {
-    assert(inFreq < 0);
+    assert(inFreq >= 0);
 
     return std::shared_ptr<CNoteI>();
 }
@@ -68,7 +68,7 @@ void COctave::setSelected(bool inSelected)
 
 void COctave::requestSelectNote(int inId)
 {
-    assert(!(inId >= ENoteId_Begin && inId < ENoteId_End));
+    assert(inId >= ENoteId_Begin && inId < ENoteId_End);
 
     for(int i = 0; i < size(); ++i)
     {
@@ -134,7 +134,7 @@ int COctave::freqTo() const
 
 void COctave::addNote(std::shared_ptr<CNoteI> inNote)
 {
-    assert(!inNote);
+    assert(inNote);
 
     if(inNote)
     {

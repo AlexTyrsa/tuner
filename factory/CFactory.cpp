@@ -29,7 +29,7 @@ void CFactory::setNotationCreator(std::function<std::shared_ptr<CNotationI> ()> 
 
 std::shared_ptr<CNoteI> CFactory::createNote(ENoteId inNoteId, EOctaveId inOctaveId, const std::string& inName, int inFreq)
 {
-    assert(!mCreateNote);
+    assert(mCreateNote);
 
     if(mCreateNote)
         return mCreateNote(inNoteId, inOctaveId, inName, inFreq);
@@ -39,7 +39,7 @@ std::shared_ptr<CNoteI> CFactory::createNote(ENoteId inNoteId, EOctaveId inOctav
 
 std::shared_ptr<COctaveI> CFactory::createOctave(EOctaveId inOctaveId, const std::string &inName)
 {
-    assert(!mCreateOctave);
+    assert(mCreateOctave);
 
     if(mCreateOctave)
         return mCreateOctave(inOctaveId, inName);
@@ -49,7 +49,7 @@ std::shared_ptr<COctaveI> CFactory::createOctave(EOctaveId inOctaveId, const std
 
 std::shared_ptr<CNotationI> CFactory::createNotation()
 {
-    assert(!mCreateNotation);
+    assert(mCreateNotation);
 
     if(mCreateNotation)
         return mCreateNotation();

@@ -41,6 +41,7 @@ else()
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 endif()
 
+target_include_directories(${PROJECT_NAME} PRIVATE 3dparty/json/include/)
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 

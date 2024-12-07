@@ -11,7 +11,7 @@ CNotation::CNotation()
 
 std::shared_ptr<COctaveI> CNotation::octave_index(int inIndex) const
 {
-    assert(!(inIndex >= 0 && inIndex < size()));
+    assert(inIndex >= 0 && inIndex < size());
 
     if(inIndex >= 0 && inIndex < size())
         return mOctaves[inIndex];
@@ -21,7 +21,7 @@ std::shared_ptr<COctaveI> CNotation::octave_index(int inIndex) const
 
 std::shared_ptr<COctaveI> CNotation::octave_id(int inId) const
 {
-    assert(!(inId >= EOctaveId_Begin && inId < EOctaveId_End));
+    assert(inId >= EOctaveId_Begin && inId < EOctaveId_End);
 
     std::vector<std::shared_ptr<COctaveI>>::const_iterator result = std::find_if(mOctaves.cbegin(), mOctaves.cend(), [inId](std::shared_ptr<COctaveI> note)->bool
     {
@@ -36,7 +36,7 @@ std::shared_ptr<COctaveI> CNotation::octave_id(int inId) const
 
 void CNotation::requestSelectOctave(int inId)
 {
-    assert(!(inId >= ENoteId_Begin && inId < ENoteId_End));
+    assert(inId >= ENoteId_Begin && inId < ENoteId_End);
 
     for(int i = 0; i < size(); ++i)
     {
@@ -50,8 +50,8 @@ void CNotation::requestSelectOctave(int inId)
 
 void CNotation::requestSelectNote(int inOctaveId, int inNoteId)
 {
-    assert(!(inNoteId >= ENoteId_Begin && inNoteId < ENoteId_End));
-    assert(!(inOctaveId >= EOctaveId_Begin && inOctaveId < EOctaveId_End));
+    assert(inNoteId >= ENoteId_Begin && inNoteId < ENoteId_End);
+    assert(inOctaveId >= EOctaveId_Begin && inOctaveId < EOctaveId_End);
 
     for(int i = 0; i < size(); ++i)
     {
@@ -100,7 +100,7 @@ bool CNotation::empty() const
 
 void CNotation::addOctave(std::shared_ptr<COctaveI> inOctave)
 {
-    assert(!inOctave);
+    assert(inOctave);
 
     if(inOctave)
     {
