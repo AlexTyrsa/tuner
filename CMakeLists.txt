@@ -29,6 +29,10 @@ set(PROJECT_SOURCES
         notation/CNotation.cpp
         factory/CFactory.h
         factory/CFactory.cpp
+        factory/CFactoryJSON.h
+        factory/CFactoryJSON.cpp
+        factory/CFactoryDefaults.h
+        factory/CFactoryDefaults.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

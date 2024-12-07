@@ -30,7 +30,7 @@ public:
     int freqFrom() const override;
     int freqTo() const override;
 
-    void addNote(std::shared_ptr<CNoteI> inNote);
+    void addNote(std::shared_ptr<CNoteI> inNote) override;
 
 protected:
     virtual void stateChanged();

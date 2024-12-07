@@ -21,6 +21,8 @@ public:
     virtual std::size_t size() const = 0;
     virtual bool empty() const = 0;
 
+    virtual void addOctave(std::shared_ptr<COctaveI> inOctave) = 0;
+
     virtual ~CNotationI() = default;
 
 public:

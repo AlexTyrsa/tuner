@@ -21,7 +21,7 @@ public:
     std::size_t size() const override;
     bool empty() const override;
 
-    void addOctave(std::shared_ptr<COctaveI> inOctave);
+    void addOctave(std::shared_ptr<COctaveI> inOctave) override;
 
 private:
     std::vector<std::shared_ptr<COctaveI>> mOctaves;

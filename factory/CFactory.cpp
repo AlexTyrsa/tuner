@@ -2,9 +2,14 @@
 
 #include <cassert>
 
-CFactory::CFactory()
+CFactory::CFactory(const std::string& inVersion) : mVersion(inVersion)
 {
 
+}
+
+std::string CFactory::version() const
+{
+    return mVersion;
 }
 
 void CFactory::setNoteCreator(std::function<std::shared_ptr<CNoteI> (ENoteId, EOctaveId, const std::string &, int)> inCreateNote)

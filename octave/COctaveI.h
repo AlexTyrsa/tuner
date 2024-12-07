@@ -31,6 +31,8 @@ public:
     virtual int freqFrom() const = 0;
     virtual int freqTo() const = 0;
 
+    virtual void addNote(std::shared_ptr<CNoteI> inNote) = 0;
+
     virtual ~COctaveI() = default;
 
 public:
