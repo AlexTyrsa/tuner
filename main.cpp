@@ -8,8 +8,10 @@
 #include "note/CNote.h"
 #include "notation/CNotation.h"
 #include "octave/COctave.h"
+#include "sample_processor/CSampleProcessorKFFT.h"
+#include "data_holder/CDataHolder.h"
 
-#include "audio_processor/QAudioProcessor.h"
+#include "controller/CTunerController.h"
 
 const char* cDataFileName = "data.json";
 
@@ -44,10 +46,11 @@ int main(int argc, char *argv[])
     }else
         notation = factory->createDefault();
 
-    QAudioProcessor processor;
+    std::shared_ptr<CSampleProcessor> sampleProcessor = std::make_shared<CSampleProcessorKFFT>();
+    std::shared_ptr<CDataHolder> data = std::make_shared<CDataHolder>(notation, sampleProcessor);
 
-    processor.start();
-
+    std::shared_ptr<CTunerController> controller = std::make_shared<CTunerController>(data);
+    controller->start();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl("qrc:/main.qml"));

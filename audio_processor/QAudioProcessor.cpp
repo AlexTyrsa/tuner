@@ -3,8 +3,6 @@
 #include <QMediaDevices>
 #include <QAudioDevice>
 
-#include <iostream>
-
 QAudioProcessor::QAudioProcessor(QObject *parent) : QIODevice(parent)
 {
     QAudioDevice info = QMediaDevices::defaultAudioInput();

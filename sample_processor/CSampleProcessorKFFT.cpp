@@ -5,7 +5,7 @@ CSampleProcessorKFFT::CSampleProcessorKFFT() : mLevel(0.0), mFreq(0)
 
 }
 
-void CSampleProcessorKFFT::setSamples(float *inSamples, std::size_t inSampleCount)
+void CSampleProcessorKFFT::setSamples(const float *inSamples, std::size_t inSampleCount)
 {
 
     ready();

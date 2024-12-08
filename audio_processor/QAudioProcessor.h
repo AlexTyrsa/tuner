@@ -16,9 +16,9 @@ protected:
     virtual void handleAudioData(const float* inData, qint64 inLen) = 0;
 
 private:
-    qint64 readData(char *data, qint64 maxlen);
-    qint64 bytesAvailable() const;
-    qint64 writeData(const char *data, qint64 len);
+    qint64 readData(char *data, qint64 maxlen) override;
+    qint64 bytesAvailable() const override;
+    qint64 writeData(const char *data, qint64 len) override;
 
 private:
     QAudioSource* mAudioIn;

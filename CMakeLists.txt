@@ -40,6 +40,8 @@ set(PROJECT_SOURCES
         data_holder/CDataHolder.cpp
         audio_processor/QAudioProcessor.h
         audio_processor/QAudioProcessor.cpp
+        controller/CTunerController.h
+        controller/CTunerController.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

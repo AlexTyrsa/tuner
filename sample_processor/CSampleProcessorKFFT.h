@@ -5,7 +5,7 @@ class CSampleProcessorKFFT : public CSampleProcessor
 public:
     CSampleProcessorKFFT();
 
-    void setSamples(float * inSamples, std::size_t inSampleCount) override;
+    void setSamples(const float * inSamples, std::size_t inSampleCount) override;
     float level() const override;
     int freq() const override;
 
