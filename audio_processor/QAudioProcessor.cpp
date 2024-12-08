@@ -8,7 +8,7 @@ QAudioProcessor::QAudioProcessor(QObject *parent) : QIODevice(parent)
     QAudioDevice info = QMediaDevices::defaultAudioInput();
 
     QAudioFormat format;
-    format.setSampleRate(48000);
+    format.setSampleRate(cSampleRate);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Float);
 

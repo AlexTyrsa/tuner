@@ -9,6 +9,9 @@ public:
     virtual float level() const = 0;
     virtual int freq() const = 0;
 
+    virtual int sampleRate() const = 0;
+    virtual void setSampleRate(int inSampleRate) = 0;
+
     virtual ~CSampleProcessor() = default;
 
 protected:

@@ -8,6 +8,9 @@ class QAudioProcessor : public QIODevice
     Q_OBJECT
 
 public:
+    static const int cSampleRate = 48000;
+
+public:
     QAudioProcessor(QObject* parent = nullptr);
 
     void start();

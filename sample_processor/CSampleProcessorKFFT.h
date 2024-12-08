@@ -9,11 +9,17 @@ public:
     float level() const override;
     int freq() const override;
 
+    int sampleRate() const override;
+    void setSampleRate(int inSampleRate) override;
+
+    ~CSampleProcessorKFFT() override;
+
 protected:
     void ready() override;
 
 private:
     float mLevel;
     int mFreq;
+    int mSampleRate;
 
 };

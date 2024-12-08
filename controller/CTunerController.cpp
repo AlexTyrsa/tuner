@@ -6,7 +6,7 @@
 
 CTunerController::CTunerController(std::shared_ptr<CDataHolder> inData) : mData(inData)
 {
-
+    data()->sampleProcessor()->setSampleRate(cSampleRate);
 }
 
 std::shared_ptr<CDataHolder> CTunerController::data() const
