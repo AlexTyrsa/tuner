@@ -13,6 +13,7 @@ QAudioProcessor::QAudioProcessor(QObject *parent) : QIODevice(parent)
     format.setSampleFormat(QAudioFormat::Float);
 
     mAudioIn = new QAudioSource(info, format, this);
+    mAudioIn->setVolume(1.0);
 }
 
 void QAudioProcessor::start()

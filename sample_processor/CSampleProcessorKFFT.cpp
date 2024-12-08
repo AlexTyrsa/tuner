@@ -14,31 +14,44 @@ CSampleProcessorKFFT::CSampleProcessorKFFT() : mLevel(0.0), mFreq(0), mSampleRat
 
 void CSampleProcessorKFFT::setSamples(const float *inSamples, std::size_t inSampleCount)
 {
-    kiss_fftr_cfg forwardConfig;
-    std::vector<kiss_fft_cpx> spectrum(inSampleCount);
-    std::size_t spectrumSize = inSampleCount / 2 + 1;
-
-    forwardConfig = kiss_fftr_alloc(inSampleCount, 0, NULL, NULL);
-
-    kiss_fftr(forwardConfig, inSamples, spectrum.data());
-
-    float maxMag = 0;
-
-    for(int i = 0; i < spectrumSize; ++i)
+    if(inSampleCount != 0)
     {
-        float mag = hypotf(spectrum[i].r, spectrum[i].i);
-        float freq = i*(int)sampleRate() / inSampleCount;
+        kiss_fftr_cfg forwardConfig;
+        std::vector<kiss_fft_cpx> spectrum(inSampleCount);
+        std::size_t spectrumSize = inSampleCount / 2 + 1;
 
-        if(mag > maxMag)
+        forwardConfig = kiss_fftr_alloc(inSampleCount, 0, NULL, NULL);
+
+        kiss_fftr(forwardConfig, inSamples, spectrum.data());
+
+        float sampleSumm = 0;
+
+        for(int i = 0; i < inSampleCount; ++ i)
+            sampleSumm += (inSamples[i] * inSamples[i]);
+
+        mLevel = sqrt(sampleSumm / inSampleCount);
+
+        float maxMag = 0;
+        int   maxFreq = 0;
+
+        for(int i = 0; i < spectrumSize; ++i)
         {
-            maxMag = mag;
-            mFreq = freq;
+            float mag = hypotf(spectrum[i].r, spectrum[i].i);
+            float freq = i * sampleRate() / inSampleCount;
+
+            if(mag > maxMag)
+            {
+                maxMag = mag;
+                maxFreq = freq;
+            }
         }
+
+        mFreq = maxFreq;
+
+        free(forwardConfig);
+
+        ready();
     }
-
-    free(forwardConfig);
-
-    ready();
 }
 
 float CSampleProcessorKFFT::level() const
