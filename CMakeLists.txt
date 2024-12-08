@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         sample_processor/CSampleProcessor.h
         sample_processor/CSampleProcessorKFFT.h
         sample_processor/CSampleProcessorKFFT.cpp
+        data_holder/CDataHolder.h
+        data_holder/CDataHolder.cpp
         audio_processor/QAudioProcessor.h
         audio_processor/QAudioProcessor.cpp
    )
