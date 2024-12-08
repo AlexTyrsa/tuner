@@ -1,3 +1,6 @@
 [submodule "3dparty/json"]
 	path = 3dparty/json
 	url = https://github.com/nlohmann/json.git
+[submodule "3dparty/kissfft"]
+	path = 3dparty/kissfft
+	url = https://github.com/mborgerding/kissfft.git

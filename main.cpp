@@ -9,6 +9,8 @@
 #include "notation/CNotation.h"
 #include "octave/COctave.h"
 
+#include "audio_processor/QAudioProcessor.h"
+
 const char* cDataFileName = "data.json";
 
 int main(int argc, char *argv[])
@@ -37,11 +39,15 @@ int main(int argc, char *argv[])
         data = dataFile.readAll();
 
         notation = factory->deserialize(data.toStdString());
-        //notation = factory->createDefault();
 
         dataFile.close();
     }else
         notation = factory->createDefault();
+
+    QAudioProcessor processor;
+
+    processor.start();
+
 
     QQmlApplicationEngine engine;
     engine.load(QUrl("qrc:/main.qml"));

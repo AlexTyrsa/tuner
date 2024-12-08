@@ -33,6 +33,11 @@ set(PROJECT_SOURCES
         factory/CFactoryJSON.cpp
         factory/CFactoryDefaults.h
         factory/CFactoryDefaults.cpp
+        sample_processor/CSampleProcessor.h
+        sample_processor/CSampleProcessorKFFT.h
+        sample_processor/CSampleProcessorKFFT.cpp
+        audio_processor/QAudioProcessor.h
+        audio_processor/QAudioProcessor.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -41,9 +46,18 @@ else()
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 endif()
 
-target_include_directories(${PROJECT_NAME} PRIVATE 3dparty/json/include/)
+target_include_directories(${PROJECT_NAME} PRIVATE
+                                                    3dparty/json/include/
+                                                    3dparty/kissfft/
+                          )
+target_link_directories(${PROJECT_NAME} PRIVATE 3dparty/kissfft/build)
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+                                                Qt${QT_VERSION_MAJOR}::Core
+                                                Qt${QT_VERSION_MAJOR}::Quick
+                                                Qt${QT_VERSION_MAJOR}::Multimedia
+                                                kissfft-float)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
                       MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
