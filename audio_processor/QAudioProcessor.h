@@ -15,8 +15,10 @@ public:
 
     void start();
 
+    virtual ~QAudioProcessor();
+
 protected:
-    virtual void handleAudioData(const float* inData, qint64 inLen) = 0;
+    virtual void handleAudioData(const float* inData, qint64 inLen);
 
 private:
     qint64 readData(char *data, qint64 maxlen) override;

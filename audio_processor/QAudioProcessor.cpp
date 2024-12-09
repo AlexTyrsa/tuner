@@ -22,6 +22,16 @@ void QAudioProcessor::start()
     mAudioIn->start(this);
 }
 
+QAudioProcessor::~QAudioProcessor()
+{
+    mAudioIn->stop();
+}
+
+void QAudioProcessor::handleAudioData(const float *inData, qint64 inLen)
+{
+
+}
+
 qint64 QAudioProcessor::writeData(const char *data, qint64 len)
 {
     const float* floatBuf = reinterpret_cast<const float*>(data);
