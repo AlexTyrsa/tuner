@@ -5,12 +5,13 @@
 #include <QDir>
 
 #include "factory/CFactoryJSON.h"
-#include "sample_processor/CSampleProcessorKFFT.h"
-#include "data_holder/CDataHolder.h"
 
 #include "qt_bundle/QNote.h"
 #include "qt_bundle/QOctave.h"
 #include "qt_bundle/QNotation.h"
+
+#include "qt_bundle/QSampleProcessor.h"
+#include "qt_bundle/QDataHolder.h"
 
 #include "controller/CTunerController.h"
 
@@ -47,8 +48,8 @@ int main(int argc, char *argv[])
     }else
         notation = factory->createDefault();
 
-    std::shared_ptr<CSampleProcessor> sampleProcessor = std::make_shared<CSampleProcessorKFFT>();
-    std::shared_ptr<CDataHolder> data = std::make_shared<CDataHolder>(notation, sampleProcessor);
+    std::shared_ptr<CSampleProcessor> sampleProcessor = std::make_shared<QSampleProcessor>();
+    std::shared_ptr<CDataHolder> data = std::make_shared<QDataHolder>(notation, sampleProcessor);
 
     std::shared_ptr<CTunerController> controller = std::make_shared<CTunerController>(data);
     controller->start();

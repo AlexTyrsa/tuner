@@ -48,6 +48,10 @@ set(PROJECT_SOURCES
         qt_bundle/QOctave.cpp
         qt_bundle/QNotation.h
         qt_bundle/QNotation.cpp
+        qt_bundle/QSampleProcessor.h
+        qt_bundle/QSampleProcessor.cpp
+        qt_bundle/QDataHolder.h
+        qt_bundle/QDataHolder.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
