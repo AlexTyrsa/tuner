@@ -46,6 +46,8 @@ void CNotation::requestSelectOctave(int inId)
         else
             octave->setSelected(false);
     }
+
+    stateChanged();
 }
 
 void CNotation::requestSelectNote(int inOctaveId, int inNoteId)
@@ -61,6 +63,8 @@ void CNotation::requestSelectNote(int inOctaveId, int inNoteId)
         else
             octave->clearNoteSelection();
     }
+
+    stateChanged();
 }
 
 std::shared_ptr<COctaveI> CNotation::selectedOctave() const
@@ -113,4 +117,9 @@ void CNotation::addOctave(std::shared_ptr<COctaveI> inOctave)
             --index;
         }
     }
+}
+
+void CNotation::stateChanged()
+{
+
 }

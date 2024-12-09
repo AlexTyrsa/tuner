@@ -42,6 +42,12 @@ set(PROJECT_SOURCES
         audio_processor/QAudioProcessor.cpp
         controller/CTunerController.h
         controller/CTunerController.cpp
+        qt_bundle/QNote.h
+        qt_bundle/QNote.cpp
+        qt_bundle/QOctave.h
+        qt_bundle/QOctave.cpp
+        qt_bundle/QNotation.h
+        qt_bundle/QNotation.cpp
    )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

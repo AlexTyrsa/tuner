@@ -23,6 +23,9 @@ public:
 
     void addOctave(std::shared_ptr<COctaveI> inOctave) override;
 
+protected:
+    virtual void stateChanged();
+
 private:
     std::vector<std::shared_ptr<COctaveI>> mOctaves;
 

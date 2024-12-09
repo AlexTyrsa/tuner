@@ -46,12 +46,19 @@ void CSampleProcessorKFFT::setSamples(const float *inSamples, std::size_t inSamp
             }
         }
 
-        mFreq = maxFreq;
+        if(level() > 0.01)
+            mFreq = maxFreq;
+        else
+            mFreq = 0;
 
         free(forwardConfig);
-
-        ready();
+    }else
+    {
+        mFreq = 0;
+        mLevel = 0;
     }
+
+    ready();
 }
 
 float CSampleProcessorKFFT::level() const

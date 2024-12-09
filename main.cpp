@@ -5,11 +5,12 @@
 #include <QDir>
 
 #include "factory/CFactoryJSON.h"
-#include "note/CNote.h"
-#include "notation/CNotation.h"
-#include "octave/COctave.h"
 #include "sample_processor/CSampleProcessorKFFT.h"
 #include "data_holder/CDataHolder.h"
+
+#include "qt_bundle/QNote.h"
+#include "qt_bundle/QOctave.h"
+#include "qt_bundle/QNotation.h"
 
 #include "controller/CTunerController.h"
 
@@ -26,9 +27,9 @@ int main(int argc, char *argv[])
     QDir::setCurrent(dataDir.absolutePath());
 
     std::shared_ptr<CFactory> factory = std::make_shared<CFactoryJSON>("1.0");
-    factory->setNoteCreator(CNoteI::create<CNote>);
-    factory->setOctaveCreator(COctaveI::create<COctave>);
-    factory->setNotationCreator(CNotationI::create<CNotation>);
+    factory->setNoteCreator(CNoteI::create<QNote>);
+    factory->setOctaveCreator(COctaveI::create<QOctave>);
+    factory->setNotationCreator(CNotationI::create<QNotation>);
 
     std::shared_ptr<CNotationI> notation;
 
