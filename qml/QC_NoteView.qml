@@ -8,12 +8,15 @@ Item
     property QNote note
     property int inputFreq: 0
 
+    implicitHeight: 40
+    implicitWidth: 140
+
     QtObject
     {
         id: private_data
 
         readonly property string name: note ? note.name : ""
-        readonly property bool selected: note ? note.selected : ""
+        readonly property bool selected: note ? note.selected : false
         readonly property int freq: note? note.freq : 0
     }
 

@@ -5,6 +5,11 @@ QOctave::QOctave(EOctaveId inId, const std::string &inName) : COctave(inId, inNa
 
 }
 
+void QOctave::requestSelectNote(int inId)
+{
+    COctave::requestSelectNote(inId);
+}
+
 QString QOctave::getName() const
 {
     return name().c_str();

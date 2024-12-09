@@ -26,10 +26,12 @@ public:
 
     QQmlListProperty<QOctave> getOctavesQML();
 
+    Q_INVOKABLE void requestSelectOctave(int inId) override;
+
 signals:
     void changed();
 
-protected:
+protected slots:
     void stateChanged() override;
 
 private:

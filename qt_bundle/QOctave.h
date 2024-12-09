@@ -21,13 +21,15 @@ public:
 public:
     QOctave(EOctaveId inId, const std::string& inName);
 
+    Q_INVOKABLE void requestSelectNote(int inId) override;
+
     QString getName() const;
     QNote* selNote() const;
 
     QQmlListProperty<QNote> getItemsQML();
 
 protected:
-    virtual void stateChanged();
+    void stateChanged() override;
 
 signals:
     void changed();

@@ -10,7 +10,13 @@ QOctave *QNotation::selOctave() const
     std::shared_ptr<COctaveI> note = selectedOctave();
 
     if(note)
-        return dynamic_cast<QOctave*>(note.get());
+    {
+        QOctave* octave = dynamic_cast<QOctave*>(note.get());
+
+        QObject::connect(octave, SIGNAL(changed()), this, SLOT(stateChanged()));
+
+        return octave;
+    }
     else
         return nullptr;
 }
@@ -28,6 +34,11 @@ QNote *QNotation::selNote() const
 QQmlListProperty<QOctave> QNotation::getOctavesQML()
 {
     return QQmlListProperty<QOctave>(this, this, &QNotation::itemsCount, &QNotation::itemAt);
+}
+
+void QNotation::requestSelectOctave(int inId)
+{
+    CNotation::requestSelectOctave(inId);
 }
 
 void QNotation::stateChanged()

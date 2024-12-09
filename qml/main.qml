@@ -8,19 +8,54 @@ Window
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Tuner")
 
-    QC_NoteView
+    color: "lightgrey"
+
+    Item
     {
-        note: TuneData.notation.selectedNote
-        inputFreq: 90000
+        anchors.fill: parent
+        anchors.margins: 15
 
-        x: 10
-        y: 10
+        Column
+        {
+            anchors.fill: parent
 
 
-        width: 140
-        height: 40
 
+            Row
+            {
+                QC_NotationView
+                {
+                    notation: TuneData.notation
+                }
+
+                Column
+                {
+                    QC_OctaveView
+                    {
+                        octave: TuneData.notation.selectedOctave
+                        inputFreq: 0
+                    }
+
+                    Text
+                    {
+                        height: 40
+                        width: 140
+                        x: 10
+
+                        verticalAlignment: Text.AlignVCenter
+
+                        text: "Selected:"
+                    }
+
+                    QC_NoteView
+                    {
+                        note: TuneData.notation.selectedNote
+                        inputFreq: 0
+                    }
+                }
+            }
+        }
     }
 }

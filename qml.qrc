@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/QC_NoteView.qml</file>
+        <file>qml/QC_OctaveView.qml</file>
+        <file>qml/QC_OctaveViewSmall.qml</file>
+        <file>qml/QC_NotationView.qml</file>
     </qresource>
 </RCC>
