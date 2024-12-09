@@ -8,8 +8,10 @@ Item
     property QNote note
     property int inputFreq: 0
 
+    property bool showDiff: false
+
     implicitHeight: 40
-    implicitWidth: 140
+    implicitWidth: 160
 
     QtObject
     {
@@ -61,7 +63,7 @@ Item
                 height: parent.height / 2
                 verticalAlignment: Text.AlignVCenter
 
-                text: "Freq: " + private_data.freq / 1000
+                text: "Freq: " + private_data.freq / 1000 + "Hz"
 
                 font.pointSize: 12
             }
@@ -71,7 +73,7 @@ Item
                 height: parent.height / 2
                 verticalAlignment: Text.AlignVCenter
 
-                text: "Diff: " + (root.inputFreq !==0 ? (private_data.freq - root.inputFreq) / 1000 : "")
+                text: "Diff: " + ((showDiff && root.inputFreq !== 0) ? (private_data.freq - root.inputFreq) / 1000 : "")
 
                 font.pointSize: 12
             }

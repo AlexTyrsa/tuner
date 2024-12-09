@@ -45,7 +45,7 @@ void CSampleProcessorKFFT::setSamples(const float *inSamples, std::size_t inSamp
         }
 
         if(level() > 0.01)
-            mFreq = maxFreq;
+            mFreq = maxFreq * 1000;
         else
             mFreq = 0;
 

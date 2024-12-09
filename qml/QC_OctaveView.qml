@@ -7,9 +7,10 @@ Item
     id: root
 
     property QOctave octave
+    property QNote nearestNote
     property int inputFreq: 0
 
-    implicitWidth: 140
+    implicitWidth: 160
     implicitHeight: octave ? octave.notes.length * 40 : 40
 
     Column
@@ -27,6 +28,7 @@ Item
 
                 note: octave.notes[index]
                 inputFreq: root.inputFreq
+                showDiff: note.selected || (nearestNote && (nearestNote.id == note.id))
 
                 MouseArea
                 {

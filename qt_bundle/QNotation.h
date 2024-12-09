@@ -27,6 +27,7 @@ public:
     QQmlListProperty<QOctave> getOctavesQML();
 
     Q_INVOKABLE void requestSelectOctave(int inId) override;
+    Q_INVOKABLE QNote* findNearest(int inFreq) const;
 
 signals:
     void changed();

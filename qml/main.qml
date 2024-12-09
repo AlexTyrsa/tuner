@@ -5,8 +5,8 @@ import "."
 
 Window
 {
-    width: 640
-    height: 480
+    width: 235
+    height: 445
     visible: true
     title: qsTr("Tuner")
 
@@ -21,7 +21,10 @@ Window
         {
             anchors.fill: parent
 
-
+            QC_SampleDataView
+            {
+                sampleProcessor: TuneData.sampleProcessor
+            }
 
             Row
             {
@@ -35,7 +38,8 @@ Window
                     QC_OctaveView
                     {
                         octave: TuneData.notation.selectedOctave
-                        inputFreq: 0
+                        inputFreq: TuneData.sampleProcessor.freq
+                        nearestNote: TuneData.notation.findNearest(inputFreq)
                     }
 
                     Text
@@ -52,7 +56,9 @@ Window
                     QC_NoteView
                     {
                         note: TuneData.notation.selectedNote
-                        inputFreq: 0
+                        inputFreq: TuneData.sampleProcessor.freq
+
+                        showDiff: true
                     }
                 }
             }

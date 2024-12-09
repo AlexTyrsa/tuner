@@ -17,6 +17,7 @@ public:
 
     virtual std::shared_ptr<COctaveI> selectedOctave() const = 0;
     virtual std::shared_ptr<CNoteI> selectedNote() const = 0;
+    virtual std::shared_ptr<CNoteI> nearest(int inFreq) const = 0;
 
     virtual std::size_t size() const = 0;
     virtual bool empty() const = 0;

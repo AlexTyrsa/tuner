@@ -48,6 +48,27 @@ std::shared_ptr<CNoteI> COctave::nearest(int inFreq) const
 {
     assert(inFreq >= 0);
 
+
+    if(inFreq >= freqFrom() && inFreq <= freqTo())
+    {
+        int minDiff = freqTo();
+        std::shared_ptr<CNoteI> result;
+
+        for(std::vector<std::shared_ptr<CNoteI>>::const_iterator i = mNotes.begin(); i != mNotes.end(); ++i)
+        {
+            int diff = abs(inFreq - (*i)->freq());
+
+            if(diff < minDiff)
+            {
+                minDiff = diff;
+
+                result = (*i);
+            }
+        }
+
+        return result;
+    }
+
     return std::shared_ptr<CNoteI>();
 }
 

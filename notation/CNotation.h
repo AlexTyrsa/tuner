@@ -17,6 +17,7 @@ public:
 
     std::shared_ptr<COctaveI> selectedOctave() const override;
     std::shared_ptr<CNoteI> selectedNote() const override;
+    std::shared_ptr<CNoteI> nearest(int inFreq) const override;
 
     std::size_t size() const override;
     bool empty() const override;

@@ -41,6 +41,16 @@ void QNotation::requestSelectOctave(int inId)
     CNotation::requestSelectOctave(inId);
 }
 
+QNote *QNotation::findNearest(int inFreq) const
+{
+    std::shared_ptr<CNoteI> note = nearest(inFreq);
+
+    if(note)
+        return dynamic_cast<QNote*>(note.get());
+    else
+        return nullptr;
+}
+
 void QNotation::stateChanged()
 {
     CNotation::stateChanged();

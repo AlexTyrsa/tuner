@@ -92,6 +92,21 @@ std::shared_ptr<CNoteI> CNotation::selectedNote() const
     return std::shared_ptr<CNoteI>();
 }
 
+std::shared_ptr<CNoteI> CNotation::nearest(int inFreq) const
+{
+    assert(inFreq >= 0);
+
+    for(std::vector<std::shared_ptr<COctaveI>>::const_iterator i = mOctaves.cbegin(); i != mOctaves.end(); ++i)
+    {
+        std::shared_ptr<CNoteI> note = (*i)->nearest(inFreq);
+
+        if(note)
+            return note;
+    }
+
+    return std::shared_ptr<CNoteI>();
+}
+
 std::size_t CNotation::size() const
 {
     return mOctaves.size();
