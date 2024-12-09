@@ -49,10 +49,17 @@ int main(int argc, char *argv[])
         notation = factory->createDefault();
 
     std::shared_ptr<CSampleProcessor> sampleProcessor = std::make_shared<QSampleProcessor>();
-    std::shared_ptr<CDataHolder> data = std::make_shared<QDataHolder>(notation, sampleProcessor);
+    std::shared_ptr<QDataHolder> data = std::make_shared<QDataHolder>(notation, sampleProcessor);
 
     std::shared_ptr<CTunerController> controller = std::make_shared<CTunerController>(data);
     controller->start();
+
+    qmlRegisterType<QNote>("QTuneLib", 1, 0, "QNote");
+    qmlRegisterType<QOctave>("QTuneLib", 1, 0, "QOctave");
+    qmlRegisterType<QNotation>("QTuneLib", 1, 0, "QNotation");
+    qmlRegisterType<QSampleProcessor>("QTuneLib", 1, 0, "QSampleProcessor");
+    qmlRegisterType<QDataHolder>("QTuneLib", 1, 0, "QDataHolder");
+    qmlRegisterSingletonInstance("QTuneLib", 1, 0, "TuneData", data.get());
 
     QQmlApplicationEngine engine;
     engine.load(QUrl("qrc:/main.qml"));
