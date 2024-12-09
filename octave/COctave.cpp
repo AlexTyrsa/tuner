@@ -78,6 +78,8 @@ void COctave::requestSelectNote(int inId)
         else
             note->setSelected(false);
     }
+
+    stateChanged();
 }
 
 std::shared_ptr<CNoteI> COctave::selectedNote() const

@@ -13,6 +13,7 @@ class QNote : public QObject,
 public:
     Q_PROPERTY(QString name READ getName CONSTANT)
     Q_PROPERTY(int id READ id CONSTANT)
+    Q_PROPERTY(int freq READ freq CONSTANT)
     Q_PROPERTY(int octId READ octave CONSTANT)
     Q_PROPERTY(bool selected READ selected NOTIFY changed)
 

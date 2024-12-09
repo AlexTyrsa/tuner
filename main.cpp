@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
         dataFile.open(QIODevice::ReadOnly);
         data = dataFile.readAll();
 
-        notation = factory->deserialize(data.toStdString());
+//        notation = factory->deserialize(data.toStdString());
+        notation = factory->createDefault();                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         dataFile.close();
     }else
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
     qmlRegisterSingletonInstance("QTuneLib", 1, 0, "TuneData", data.get());
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl("qrc:/main.qml"));
+    engine.load(QUrl("qrc:/qml/main.qml"));
 
     int result = app.exec();
 

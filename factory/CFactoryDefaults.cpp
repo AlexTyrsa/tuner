@@ -44,6 +44,8 @@ std::shared_ptr<CNotationI> CFactory::createDefault()
         octave->addNote(createNote(G2::cNoteId, G2::cOctId, G2::cName, G2::cFreq));
         octave->addNote(createNote(A2::cNoteId, A2::cOctId, A2::cName, A2::cFreq));
         octave->addNote(createNote(B2::cNoteId, B2::cOctId, B2::cName, B2::cFreq));
+
+        octave->requestSelectNote(G2::cNoteId);
     }
     {
         std::shared_ptr<COctaveI> octave = createOctave(EOctaveId_3, "3");

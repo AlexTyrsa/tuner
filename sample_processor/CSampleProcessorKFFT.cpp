@@ -5,8 +5,6 @@
 
 #include <vector>
 
-#include <iostream>
-
 CSampleProcessorKFFT::CSampleProcessorKFFT() : mLevel(0.0), mFreq(0), mSampleRate(0)
 {
 
@@ -88,5 +86,5 @@ CSampleProcessorKFFT::~CSampleProcessorKFFT()
 
 void CSampleProcessorKFFT::ready()
 {
-    std::cout << level() << " " << freq() << std::endl;
+
 }
