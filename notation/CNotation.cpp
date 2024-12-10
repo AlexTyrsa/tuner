@@ -4,7 +4,7 @@
 
 #include <cassert>
 
-CNotation::CNotation()
+CNotation::CNotation() : mFreqCache(0)
 {
 
 }
@@ -95,6 +95,11 @@ std::shared_ptr<CNoteI> CNotation::selectedNote() const
 std::shared_ptr<CNoteI> CNotation::nearest(int inFreq) const
 {
     assert(inFreq >= 0);
+
+    if(inFreq == mFreqCache)
+        return mNearestCache;
+
+    mFreqCache = inFreq;
 
     for(std::vector<std::shared_ptr<COctaveI>>::const_iterator i = mOctaves.cbegin(); i != mOctaves.end(); ++i)
     {

@@ -30,4 +30,7 @@ protected:
 private:
     std::vector<std::shared_ptr<COctaveI>> mOctaves;
 
+    mutable int mFreqCache;
+    mutable std::shared_ptr<CNoteI> mNearestCache;
+
 };
