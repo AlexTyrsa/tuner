@@ -19,7 +19,28 @@ Item
 
         readonly property string name: note ? note.name : ""
         readonly property bool selected: note ? note.selected : false
-        readonly property int freq: note? note.freq : 0
+        readonly property int freq: note ? note.freq : 0
+        property int inputFreqToShow: 0
+    }
+
+    onInputFreqChanged:
+    {
+        if(showDiff && (inputFreq > private_data.inputFreqToShow))
+        {
+           private_data.inputFreqToShow = inputFreq;
+
+            showTimer.start();
+        }
+    }
+
+    Timer
+    {
+        id: showTimer
+
+        repeat: false
+        interval: 1500
+
+        onTriggered: private_data.inputFreqToShow = 0
     }
 
     Rectangle
@@ -73,7 +94,7 @@ Item
                 height: parent.height / 2
                 verticalAlignment: Text.AlignVCenter
 
-                text: "Diff: " + ((showDiff && root.inputFreq !== 0) ? (private_data.freq - root.inputFreq) / 1000 : "")
+                text: "Diff: " + ((private_data.inputFreqToShow !== 0) ? (private_data.freq - private_data.inputFreqToShow) / 1000 : "")
 
                 font.pointSize: 12
             }
