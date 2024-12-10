@@ -42,8 +42,7 @@ int main(int argc, char *argv[])
         dataFile.open(QIODevice::ReadOnly);
         data = dataFile.readAll();
 
-//        notation = factory->deserialize(data.toStdString());
-        notation = factory->createDefault();                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        notation = factory->deserialize(data.toStdString());
 
         dataFile.close();
     }else

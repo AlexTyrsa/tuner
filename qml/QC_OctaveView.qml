@@ -28,7 +28,7 @@ Item
 
                 note: octave.notes[index]
                 inputFreq: root.inputFreq
-                showDiff: note.selected || (nearestNote && (nearestNote.id == note.id))
+                showDiff: note.selected || (nearestNote === note)
 
                 MouseArea
                 {
